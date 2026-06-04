@@ -1,6 +1,11 @@
+import java.util.Scanner;
+
 public class Reverse {
     public static void main(String[] args) {
-        String reverse = "Bishal";
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the word.");
+        String reverse = sc.nextLine();
         StringBuilder result = new StringBuilder(); 
 
         for (int i = reverse.length() - 1; i >= 0; i--) {
