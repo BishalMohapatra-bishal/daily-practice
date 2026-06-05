@@ -12,5 +12,7 @@ public class Reverse {
             result.append(reverse.charAt(i));
         }
         System.out.println(result.toString());
+
+        sc.close();
     }
 }

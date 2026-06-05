@@ -32,6 +32,8 @@ public class AtmWithdrawal {
             System.out.println("Insufficient balance");
         }
 
+        sc.close();
+
 
 
     }
