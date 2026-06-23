@@ -18,7 +18,7 @@ public class Comp {
         list.add(99);
         list.add(100);
         
-        Collections.sort(list, (a, b) -> b - a);
+        Collections.sort(list, (a, b) -> b - a); 
 
         System.out.println(list);
     }
