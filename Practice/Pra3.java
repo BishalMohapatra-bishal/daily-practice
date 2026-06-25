@@ -9,7 +9,7 @@ public class Pra3 {
 
         List<Integer> l1 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8 ,9, 10, 11, 12);
             int sum = l1.stream().filter(n -> n % 2 == 0).mapToInt(n -> n ).sum();
-            System.out.println(sum);
+            System.out.println(sum); 
 
         }
     }
