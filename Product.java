@@ -1,4 +1,4 @@
-package TheDuplicateProductCatalog;
+
 
 import java.util.TreeSet;
 

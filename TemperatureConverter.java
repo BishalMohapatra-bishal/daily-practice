@@ -11,6 +11,8 @@ public class TemperatureConverter {
         double fahrenheit = convertToFahrenheit(celsius);
 
         System.out.println(celsius + "°C is equal to " + fahrenheit + "°F");
+
+        sc.close();
     }
 
     // This method handles the logic

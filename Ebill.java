@@ -44,5 +44,7 @@ public class Ebill {
 
 	}
 
+    scanner.close();
+
     }
 }
