@@ -26,6 +26,13 @@ public class Race {
         Thread thread2 = new Thread(new NumberPrinter("Thread-Odd", false));
 
         thread1.start();
+
+        try{
+             thread1.join();
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+
         thread2.start();
     }
 }
