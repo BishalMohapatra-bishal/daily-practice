@@ -1,16 +1,17 @@
 public class Palindrome {
     public static void main(String[] args) {
 
-        String str = "LeveL";
+        String str = "Level";
+        String touppercase = str.toUpperCase();
 
-        int right = str.length() - 1;
+        int right = touppercase.length() - 1;
 
         int left = 0;
 
         boolean isPalindrome = true;
         
         while (left < right) {
-            if (str.charAt(left) != str.charAt(right)) {
+            if (touppercase.charAt(left) != touppercase.charAt(right)) {
                 isPalindrome = false;
                 break;
             }
@@ -19,9 +20,9 @@ public class Palindrome {
         }
 
         if (isPalindrome) {
-            System.out.println(str + " : is a Palindrome.");
+            System.out.println(touppercase + " : is a Palindrome.");
         } else {
-            System.out.println(str + " : is not a Palindrome.");
+            System.out.println(touppercase + " : is not a Palindrome.");
         }
     }
 }
