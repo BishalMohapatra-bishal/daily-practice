@@ -14,6 +14,8 @@ public class Reverse {
         System.out.println(result.toString());
 
         sc.close();
+
+        // Second way
         String getReverse = reverceInPlace("Barasa");
         System.out.println(getReverse);
     }
