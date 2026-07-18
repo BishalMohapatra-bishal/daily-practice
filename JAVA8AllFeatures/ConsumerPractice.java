@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 public class ConsumerPractice {
     public static void main(String[] args) {
-        Consumer<String> consumer = s -> System.out.println(s);
+        // Consumer<String> consumer = s -> System.out.println(s);
         // consumer.accept("Bishal"); 
 
         Consumer<List<Integer>> listConsumer1 = li -> {
