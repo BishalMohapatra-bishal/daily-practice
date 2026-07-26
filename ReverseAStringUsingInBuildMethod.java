@@ -13,6 +13,8 @@ public class ReverseAStringUsingInBuildMethod {
         builder.reverse();
 
         System.out.println("Word after reverse: " + builder);
+
+        sc.close();
     }
     
 }
