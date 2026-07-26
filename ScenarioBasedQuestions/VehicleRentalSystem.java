@@ -13,21 +13,22 @@ public class VehicleRentalSystem {
         int rentalDays = 5;
         System.out.println("---- Fleet Rental Summary (" + rentalDays + " Days) ----");
 
-        for(Vehicle vehicle : fleet) {
+        for (Vehicle vehicle : fleet) {
             vehicle.displayDetails();
             double fee = vehicle.calculateRentalFee(rentalDays);
-            System.out.println("Total Fee for " + rentalDays + " days: Rs"+ fee);
+            System.out.println("Total Fee for " + rentalDays + " days: Rs" + fee);
             System.out.println("---------------------------------------------------------------------");
         }
-        
+
     }
-    
+
 }
+
 abstract class Vehicle {
     private String vehicleId;
     private String brand;
     private double baseDailyRate;
-    
+
     public Vehicle(String vehicleId, String brand, double baseDailyRate) {
         this.vehicleId = vehicleId;
         this.brand = brand;
@@ -50,15 +51,16 @@ abstract class Vehicle {
     public void setBaseDailyRate(double baseDailyRate) {
 
     }
-    
+
     public abstract double calculateRentalFee(int days);
 
     void displayDetails() {
-        System.out.println("Your chossen vehicle details: \nvehicleId: " + getVehicleId() + "\nBrand: " + getBrand() + "\nBaseDailyRate: " + getBaseDailyRate());
+        System.out.println("Your chossen vehicle details: \nvehicleId: " + getVehicleId() + "\nBrand: " + getBrand()
+                + "\nBaseDailyRate: " + getBaseDailyRate());
     }
 }
 
-class Car extends Vehicle{
+class Car extends Vehicle {
     private int numberOfDoors;
 
     public Car(String vehicleId, String brand, double baseDailyRate, int numberOfDoors) {
@@ -66,19 +68,19 @@ class Car extends Vehicle{
     }
 
     @Override
-     public double calculateRentalFee(int days) {
-            double total = getBaseDailyRate() * days;
-            if (numberOfDoors == 2) {
-                total += 50;
-            }
-            return total;
-     }
+    public double calculateRentalFee(int days) {
+        double total = getBaseDailyRate() * days;
+        if (numberOfDoors == 2) {
+            total += 50;
+        }
+        return total;
+    }
 
-     @Override
-     public void displayDetails() {
+    @Override
+    public void displayDetails() {
         super.displayDetails();
         System.out.println("Type: Car | Doors: " + numberOfDoors);
-     }
+    }
 }
 
 class Truck extends Vehicle {
