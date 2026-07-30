@@ -43,25 +43,54 @@ class User {
     
 }
 
-interface UserMethod {
-    void processUsers(List<User> listUsers, 
+public class NotificationandDiscountPipeline {
+
+    public static void processUsers(
+        List<User> listUsers, 
         Predicate<User> predicateUser, 
         Function<User, Double> functionUser, 
-        Consumer<User> consumerUser);
-}
+        Consumer<String> consumerUser) {
 
-public class NotificationandDiscountPipeline {
+            for(User user : listUsers) {
+                if (predicateUser.test(user)) {
+                    double finalPrice = functionUser.apply(user);
+
+                    String message = String.format("Hi %s (%s), your final discounted price is $%.2f", user.getName(), user.getEmail(), finalPrice);
+
+                    consumerUser.accept(message);
+                }
+            }
+        }
     public static void main(String[] args) {
         User u1 = new User("Bishal Mohapatra", "bishalmohapatra000@gmail.com", "Gold", 10000.00, true);
         User u2 = new User("Barasa Mohapatra", "barasamohapatra001@gmail.com", "Gold", 20000.00, true);
         User u3 = new User("Apple Kumar", "applekumar002@gmail.com", "Silver",9000.00,  false );
-        User u4 = new User("Orange Kumari", "orangekumari003@gmail.com", "Bronze", 3000.00, false);
+        User u4 = new User("Orange Kumari", "orangekumari003@gmail.com", "Default", 3000.00, false);
 
         List<User> userList = new ArrayList<>();
         userList.add(u1);
         userList.add(u2);
         userList.add(u3);
         userList.add(u4);
+
+        Predicate<User> eligibleUserFilter = user -> user.isActive() && user.getCartTotal() >= 100.00;
+
+            Function<User, Double> discountCalculator = users -> {
+            double original = users.getCartTotal();
+            return switch (users.getMembershipTier().toUpperCase()) {
+                case "GOLD" -> original * 0.80;
+                case "SILVER" -> original * 0.90;
+                default -> original;
+            };
+        };
+        
+        Consumer<String> emailNotifier = msg -> System.out.println("[EMAIL NOTIFICATION]" + msg);
+
+        System.out.println("---Processing Eligible User Discounts ---");
+        processUsers(userList, eligibleUserFilter, discountCalculator, emailNotifier);
+
+
+        
 
     }
 }
