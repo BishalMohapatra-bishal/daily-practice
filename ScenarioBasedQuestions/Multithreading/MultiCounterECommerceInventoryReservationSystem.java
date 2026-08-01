@@ -10,7 +10,7 @@ class InventoryManager {
     private int availableStock;
     private final Lock lock = new ReentrantLock();
 
-    public InventoryManager(int initialStock) {
+    public InventoryManager(int availableStock) {
         this.availableStock = availableStock;
     }
 
