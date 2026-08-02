@@ -13,6 +13,10 @@ class Ticket {
         this.isVip = isVip;
     }
 
+     public double calculatePrice() {
+        return isVip ? 150 : 200;
+    }
+
     public String getCustomerName() {
         return customerName;
     }
@@ -25,15 +29,6 @@ class Ticket {
         return isVip;
     }
 
-    public static double calculatePrice( Ticket ticket, int noOfSeat) {
-        double ticketCost;
-
-        if (ticket.isVip) {
-            return ticketCost = noOfSeat * 200;
-        } else {
-            return ticketCost = noOfSeat * 150;
-        }
-    }
 
 }
 
@@ -46,11 +41,21 @@ class MovieTicketBookingSystem {
     Ticket t5 = new Ticket("Mango Kumar", "MK105", false);
 
     List<Ticket> l1 = List.of(t1, t2, t3, t4, t5);
+
+    double totalRevenue = 0.0;
+
+    System.out.println("--- Movie Booking Details ---");
     
     for (Ticket tickets : l1) {
-        double totalPrice = Ticket.calculatePrice(tickets, 2);
-        System.out.println("Customer Name: " + tickets.getCustomerName() + " is trying to book tickets for seat number: " + tickets.getSeatNumber() + ". And total price is: Rs" + totalPrice);
+        double price = tickets.calculatePrice();
+        totalRevenue += price;
+ 
+        String type = tickets.getIsVIP() ? "VIP" : "Regular";
+        System.out.println("Customer: " + tickets.getCustomerName() + " is trying to book tickets for seat number: " + tickets.getSeatNumber() + ". And total price is: Rs" + price);
     }
+
+    System.out.println("---------------------------------------------------------");
+    System.out.println("Total Revenue Collected: Rs" + totalRevenue);
 
     }
    
