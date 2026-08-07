@@ -34,12 +34,23 @@ class OrderProcessor {
                 return 0.0;
             }
 
-        double disPrice = 0.0;
+        double subPrice = 0.0;
 
         for(MenuItem item : items) {
             double itemPrice = item.getPrice();
+
+            if ("Beverage.".equalsIgnoreCase(item.getCategory())) {
+                itemPrice = itemPrice * 0.90;
+            }
+
+            subPrice += itemPrice;
         }
-           
+
+        if (subPrice > 30.0) {
+            System.out.println("-> Order eligible for Rs5.00 flat discount!");
+            subPrice -= 5.0;
+        }
+           return subPrice;
     }
 }
 
@@ -57,7 +68,15 @@ public class OnlineFoodDeliveryOrderCalculater {
         items.add(i4);
 
         OrderProcessor order = new OrderProcessor();
-        order.calculateTotal(items);
+        System.out.println("---Order Summery---");
+        for(MenuItem item : items) {
+            System.out.printf("- %s (%s): $%.2f%n", item.getItemName(), item.getCategory(), item.getPrice());
+        }
+
+        double finalBill = order.calculateTotal(items);
+
+        System.out.println("--------------------------------------------");
+        System.out.printf("Final Total Bill: $%.2f%n", finalBill);
     }
     
 }
