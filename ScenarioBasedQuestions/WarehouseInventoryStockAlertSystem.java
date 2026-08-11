@@ -1,5 +1,6 @@
 package ScenarioBasedQuestions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,16 +13,29 @@ class StockTracker {
     }
 
     public void addStock(List<String> incomingItems) {
+        if (incomingItems == null) return; 
+            
         for(String product : incomingItems) {
-            stocks.put(product, stocks.getOrDefault(product, 0) + 1);
+            if (product != null && !product.trim().isEmpty()) {
+                String cleanItem = product.trim();
+                stocks.put(cleanItem, stocks.getOrDefault(cleanItem, 0) + 1);
+            }
         }
     }
     
     public List<String> getLowStockItems(int threshold) {
-        for(String lowProduct : stocks.entrySet()) {
-            System.out.println(lowProduct);
+        List<String> lowStock = new ArrayList<>();
+
+        for(Map.Entry<String, Integer> entry : stocks.entrySet()) {
+            if (entry.getValue() <= threshold) {
+                lowStock.add(entry.getKey() + " (Count: " + entry.getValue() + ")");
+            }
         }
-        return null;
+        return lowStock;
+    }
+
+    public Map<String , Integer> getStock() {
+        return stocks;
     }
 }
 
