@@ -43,11 +43,22 @@ class StockTracker {
 public class WarehouseInventoryStockAlertSystem {
     public static void main(String[] args) {
 
-        List<String> list = List.of("Laptop", "mobile", "Laptop", "earboard");
+        StockTracker tracker = new StockTracker();
 
-        StockTracker t1 = new StockTracker();
-        t1.addStock(list);
+        List<String> list = List.of("Monitor", "Keyword", "Mouse", "Monitor", "Monitor", "Keyword", "Cable");
 
-        t1.getLowStockItems(2);
+        System.out.println("--- Processing Incoming Shipment ---");
+        tracker.addStock(list);
+        
+        System.out.println("\n--- Current Inventory Levels ---");
+        for (Map.Entry<String, Integer> entry : tracker.getStock().entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue() + " units");
+        }
+
+        System.out.println("\n--- Low Stock Alert (Quantity <= 2) ---");
+        List<String> lowStock =tracker.getLowStockItems(2);
+        for (String item : lowStock) {
+            System.out.println("⚠️ Alert: " + item);
+        }
     }
 }
