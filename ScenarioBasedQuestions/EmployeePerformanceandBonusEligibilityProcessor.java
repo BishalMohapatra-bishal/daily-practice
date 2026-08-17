@@ -63,11 +63,11 @@ class HRProcessor {
 public class EmployeePerformanceandBonusEligibilityProcessor {
     public static void main(String[] args) {
         List<Employee> employeeList = List.of(
-            new Employee(101, "Amit", "IT", 75000.0, 4.5),      // Eligible
-            new Employee(102, "Priya", "HR", 50000.0, 3.8),     // Not Eligible
-            new Employee(103, "Bishal", "IT", 85000.0, 4.8),     // Eligible
-            new Employee(104, "Suman", "Sales", 60000.0, 3.2),  // Not Eligible
-            new Employee(105, "Anita", "Finance", 90000.0, 4.2) // Eligible
+            new Employee(101, "Amit", "IT", 75000.0, 4.5),      
+            new Employee(102, "Priya", "HR", 50000.0, 3.8),     
+            new Employee(103, "Bishal", "IT", 85000.0, 4.8),    
+            new Employee(104, "Suman", "Sales", 60000.0, 3.2),  
+            new Employee(105, "Anita", "Finance", 90000.0, 4.2) 
         );
 
         HRProcessor p1 = new HRProcessor();
