@@ -60,5 +60,8 @@ public class ECommercePaymentGatewayIntegration {
         
         PaymentMethod upi = new UpiPayment("Ajit@upi");
         checkout.completeOrder(upi, 450.0);
+
+        PaymentMethod card2 = new CreditCardPayment("11");
+        checkout.completeOrder(card2, 10000);
     }
 }
