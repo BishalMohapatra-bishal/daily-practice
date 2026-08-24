@@ -50,7 +50,7 @@ class MovieTicketBookingSystem {
         double price = tickets.calculatePrice();
         totalRevenue += price;
  
-        String type = tickets.getIsVIP() ? "VIP" : "Regular";
+        // String type = tickets.getIsVIP() ? "VIP" : "Regular";
         System.out.println("Customer: " + tickets.getCustomerName() + " is trying to book tickets for seat number: " + tickets.getSeatNumber() + ". And total price is: Rs" + price);
     }
 
