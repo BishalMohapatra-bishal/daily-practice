@@ -39,9 +39,17 @@ class User {
 
     @Override
     public String toString() {
-        return String.format("User[id=%s, fullName='%s', email='%s', hash='%s', registeredAt=%s]",
-        id, fullName, email, passwordHash, registeredAt);
+        return "User [id=" + id + ", fullName=" + fullName + ", email=" + email + ", passwordHash=" + passwordHash
+                + ", registeredAt=" + registeredAt + "]";
     }
+
+    // @Override
+    // public String toString() {
+    //     return String.format("User[id=%s, fullName='%s', email='%s', hash='%s', registeredAt=%s]",
+    //     id, fullName, email, passwordHash, registeredAt);
+    // }
+
+    
 }
 
 class UserRegistrationDto {
@@ -114,3 +122,9 @@ public class UserRegistrationAndDtoTransformationAPI {
         }
     }
 }
+
+// public class UserRegistrationAndDtoTransformationAPI {
+//     public static void main(String[] args) {
+//         System.out.println("Hello world..");
+//     }
+// }
