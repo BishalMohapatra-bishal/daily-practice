@@ -7,7 +7,10 @@ import java.util.List;
 public class CommonElement {
     public static void main(String[] args) {
         List<Integer> list1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        System.out.println("List1 elements are." + list1);
+
         List<Integer> list2 = new ArrayList<>(Arrays.asList(3, 4, 5, 6));
+        System.out.println("List2 elements are." + list2);
 
         List<Integer> common = new ArrayList<>(list1);
         common.retainAll(list2);
