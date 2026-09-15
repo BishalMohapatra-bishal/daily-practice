@@ -7,9 +7,9 @@ import java.util.Set;
 
 class Product {
 
-    private int productId;
-    private String skuCode;
-    private double price;
+    private final int productId;
+    private final String skuCode;
+    private final double price;
 
     public Product(int productId, String skuCode, double price) {
         this.productId = productId;
@@ -56,6 +56,13 @@ class Product {
             return false;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Product [productId=" + productId + ", skuCode=" + skuCode + ", price=" + price + "]";
+    }
+
+    
 }
 
 class InventoryService {
