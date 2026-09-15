@@ -67,6 +67,10 @@ class Product {
 
 class InventoryService {
     public int processInventory(List<Product> incomingProducts) {
+        if (incomingProducts == null) {
+            return 0;
+        }
+        
         Set<Product> productCount = new HashSet<>(incomingProducts);
         return productCount.size();
     }
@@ -81,6 +85,9 @@ public class ECommerceDuplicateInventoryDetector {
         );
 
         InventoryService in1 = new InventoryService();
-        System.out.println("Total unique product count is: " + in1.processInventory(products));
+        int count = in1.processInventory(products);
+
+        System.out.println("Total incoming products: " + products.size());
+        System.out.println("Total unique product count is: " + count);
     }
 }
