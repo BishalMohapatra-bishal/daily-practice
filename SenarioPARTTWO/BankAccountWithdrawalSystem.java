@@ -36,7 +36,6 @@ public class BankAccountWithdrawalSystem {
         } finally {
             System.out.println("Transaction completed.");
         }
-
         try {
             acc1.withdraw(600);
         } catch(InsufficientBalanceException iee) {
