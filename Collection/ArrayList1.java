@@ -15,8 +15,8 @@ public class ArrayList1 {
         // li2.add(13);
         // System.out.println(li2);
 
-        System.out.println(19 % 4);
-        System.out.println(4 % 6);
+        // System.out.println(19 % 4);
+        // System.out.println(4 % 6);
         
     }
     
