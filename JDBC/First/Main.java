@@ -12,8 +12,13 @@ public class Main {
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
-        } catch (SQLException e) {
 
+            System.out.println("Database connected sucessfully.");
+
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Database connection failed.");
+            e.printStackTrace();
         }
     }
     
