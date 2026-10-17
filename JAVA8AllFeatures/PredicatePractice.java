@@ -1,4 +1,3 @@
-package JAVA8AllFeatures;
 
 import java.util.function.Predicate;
 

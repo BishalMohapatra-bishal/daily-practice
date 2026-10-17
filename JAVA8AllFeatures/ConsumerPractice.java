@@ -1,4 +1,3 @@
-package JAVA8AllFeatures;
 
 import java.util.Arrays;
 import java.util.List;

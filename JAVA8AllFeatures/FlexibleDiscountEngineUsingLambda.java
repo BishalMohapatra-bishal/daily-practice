@@ -1,4 +1,3 @@
-package JAVA8AllFeatures;
 
 @FunctionalInterface 
 interface DiscountStrategy {
