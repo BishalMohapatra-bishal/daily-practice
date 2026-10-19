@@ -26,7 +26,13 @@ public class ValidPalindrome {
         return true;
     }
     public static void main(String[] args) {
-        
+        ValidPalindrome pa = new ValidPalindrome();
+
+        if (pa.isPalindrome("KATAK")) {
+            System.out.println("Is a palindromr");
+        } else {
+            System.out.println("Not a palindrome");
+        }
     }
     
 }
