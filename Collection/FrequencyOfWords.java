@@ -42,6 +42,12 @@ class SolutionFrequency {
 
 public class FrequencyOfWords {
     public static void main(String[] args) {
+
+        SolutionFrequency sf = new SolutionFrequency();
+        String[] words = {"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"};
+
+        System.out.println(sf.topKFrequent(words, 4));
+
         
     }
 }
