@@ -43,7 +43,9 @@ public class StudentRepository {
             preparedStatement.setString(2, student.getEmail());
             preparedStatement.setInt(3, student.getAge());
 
-            int rowAffected = preparedStatement.executeUpdate(sql);
+            // int rowAffected = preparedStatement.executeUpdate(sql);  dont pass sql as argument in preparedStatement here
+            // executeUpdate() this method use for --> CREATE, UPDATE, DELETE 
+            int rowAffected = preparedStatement.executeUpdate();
 
             if (rowAffected == 1) {
                 System.out.println("Create student successful");
@@ -78,7 +80,8 @@ public class StudentRepository {
             preparedStatement.setLong(4, id);
 
 
-            int rowAffected = preparedStatement.executeUpdate(sql);
+            // int rowAffected = preparedStatement.executeUpdate(sql); //Remove sql as parameter
+            int rowAffected = preparedStatement.executeUpdate();
 
             if (rowAffected == 1) {
                 System.out.println("update operation sucessful");
@@ -94,7 +97,9 @@ public class StudentRepository {
 
     public void deleteUser(Long id) {
         String sql = """
-                    DELETE from student " + "WHERE id = ?
+                    // DELETE from student " + "WHERE id = ?
+                    DELETE from student 
+                    WHERE id = ? 
                     """;
         try(
             Connection connection = DriverManager.getConnection(url, username, password);
@@ -104,6 +109,7 @@ public class StudentRepository {
 
             preparedStatement.setLong(1, id);
             
+            // int rowAffected = preparedStatement.executeUpdate(sql); remove sql as parameter here
             int rowAffected = preparedStatement.executeUpdate(sql);
             if (rowAffected == 1) {
                 System.out.println("Deletion sucessful");
@@ -130,7 +136,9 @@ public class StudentRepository {
 
             preparedStatement.setLong(1, id);
 
-            try(ResultSet resultSet = preparedStatement.executeQuery(sql)) {
+            // try(ResultSet resultSet = preparedStatement.executeQuery(sql)) { Remove sql as query from here as well
+            // executeQuery() --> This method is use to READ(SELECT) Operations
+            try(ResultSet resultSet = preparedStatement.executeQuery()) {
 
             if (resultSet.next()) {
                  Student student = mapRow(resultSet);
@@ -152,6 +160,7 @@ public class StudentRepository {
             String sql = "SELECT id, name, email, age " + 
             "FROM student where id = 2";
 
+            // execute() --> General purpose (CRUD) 
             boolean result = statement.execute(sql);
 
             if (result) {
