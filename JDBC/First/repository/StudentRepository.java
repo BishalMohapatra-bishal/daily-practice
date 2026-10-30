@@ -15,8 +15,8 @@ public class StudentRepository {
     String username = "root";
     String password = "pass2903";
 
-    Connection connection = null;
-    PreparedStatement preparedStatement;
+    // Connection connection = null;
+    // PreparedStatement preparedStatement;
 
     public void createUser(Student student) {
 
