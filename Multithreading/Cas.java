@@ -91,10 +91,11 @@ class LikeCounter {
     AtomicReference<Integer> totalCount = new AtomicReference<>(0);
 
     public void like() {
-        while (true) {
 
-            Integer currentCount;
-            Integer finalCount;
+        Integer currentCount;
+        Integer finalCount;
+
+        while (true) {
 
             // 1. We will capture the latest value of the totalCount.
             // Integer currentCount = totalCount.get(); 
