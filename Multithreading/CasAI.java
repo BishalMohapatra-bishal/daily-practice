@@ -96,11 +96,12 @@ class LikeCounters {
 
     public void like() {
 
+        
+        //     Integer currentCount;
+        //     Integer finalCount;
         totalCount.incrementAndGet();
         // while (true) {
 
-        //     Integer currentCount;
-        //     Integer finalCount;
 
         //     // 1. We will capture the latest value of the totalCount.
         //     // Integer currentCount = totalCount.get(); 
