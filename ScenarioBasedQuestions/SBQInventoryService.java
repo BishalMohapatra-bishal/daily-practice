@@ -41,26 +41,62 @@ package ScenarioBasedQuestions;
 //     }
 // }
 
-import java.util.Objects;
+// import java.util.Objects;
 
-class SynchronizedInventoryService {
-    private int availableStock = 1;
-    private final Object stockLock = new Object();
+// class SynchronizedInventoryService {
+//     private int availableStock = 1;
+//     private final Object stockLock = new Object();
+
+//     public boolean placeOrder(String userId) {
+//         Objects.requireNonNull(userId, "userId must not be null");
+
+//         boolean reserved;
+//         synchronized (stockLock) {
+//             if (availableStock <= 0) {
+//                 System.out.println(userId + " failed: out of stock.");
+//                 return false;
+//             }
+//             availableStock--;
+//             reserved = true;
+//         }
+
+//         // Simulated downstream work outside the lock
+//         try {
+//             Thread.sleep(50);
+//         } catch (InterruptedException e) {
+//             Thread.currentThread().interrupt();
+//         }
+
+//         System.out.println(userId + " successfully reserved the item.");
+//         return reserved;
+//     }
+// }
+
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
+
+ class AtomicInventoryService {
+    private final AtomicInteger availableStock = new AtomicInteger(1);
 
     public boolean placeOrder(String userId) {
         Objects.requireNonNull(userId, "userId must not be null");
 
-        boolean reserved;
-        synchronized (stockLock) {
-            if (availableStock <= 0) {
-                System.out.println(userId + " failed: out of stock.");
-                return false;
+        final boolean[] reserved = {false};
+
+        availableStock.updateAndGet(current -> {
+            if (current > 0) {
+                reserved[0] = true;
+                return current - 1;
             }
-            availableStock--;
-            reserved = true;
+            reserved[0] = false;
+            return current;
+        });
+
+        if (!reserved[0]) {
+            System.out.println(userId + " failed: out of stock.");
+            return false;
         }
 
-        // Simulated downstream work outside the lock
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {
@@ -68,6 +104,6 @@ class SynchronizedInventoryService {
         }
 
         System.out.println(userId + " successfully reserved the item.");
-        return reserved;
+        return true;
     }
 }
