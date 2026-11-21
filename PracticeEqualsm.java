@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class PracticeEqualsm {
     public static void main(String[] args) {
         Studentss s1 = new Studentss("Bishal", 24);
@@ -11,6 +13,8 @@ public class PracticeEqualsm {
 
         System.out.println(name1 == name2);
         System.out.println(name1.equals(name2));
+
+        System.out.println(Objects.equals(name1, name2));
     }
 }
 
