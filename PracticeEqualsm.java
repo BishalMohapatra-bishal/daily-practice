@@ -3,8 +3,14 @@ public class PracticeEqualsm {
         Studentss s1 = new Studentss("Bishal", 24);
         Studentss s2 = new Studentss("Bishal", 24);
 
-        System.out.println(s1 == s2);
-        System.out.println(s1.equals(s2));
+        // System.out.println(s1 == s2);
+        // System.out.println(s1.equals(s2));
+
+        String name1 = "Bishal";
+        String name2 = "Bishal";
+
+        System.out.println(name1 == name2);
+        System.out.println(name1.equals(name2));
     }
 }
 
